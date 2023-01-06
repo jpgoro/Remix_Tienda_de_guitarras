@@ -19,6 +19,11 @@ export function links(){
   ]
 }
 
+/**
+ * Es una función asíncrona que devuelve una promesa que se resuelve en una serie de objetos de
+ * guitarra.
+ * @returns Los datos de la función getGuitarras().
+ */
 export async function loader(){
   const guitarras = await getGuitarras()
   return guitarras.data
