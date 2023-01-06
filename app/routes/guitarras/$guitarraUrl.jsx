@@ -3,11 +3,31 @@ import {getGuitarra} from "~/models/guitarras.sever"
 import styles from "~/styles/guitarras.css"
 
 
+export async function loader({params}){
+   const {guitarraUrl} = params
+   const guitarra1 = await getGuitarra(guitarraUrl)
+
+   if(guitarra1.data.length === 0){
+    throw new Response('',{
+      status: 404,
+      statusText: 'Guitarra no encontrada'
+    })
+   }
+   return guitarra1
+}
+
 /**
  * Toma los datos de la API y devuelve un título y una descripción para la página.
  * @returns Un objeto con el título y la descripción de la página.
  */
 export function meta({data}){
+  if(!data){
+    return{
+      title: 'GuitarLA - Guitarra no encontrada',
+      description: `Guitarras, venta de guitarras, guitarra no encontrada`
+    }
+  }
+
   return {
     title: `GuitarLA - ${data.data[0].attributes.nombre}`,
     description: `Guitarras, venta de guitarras, guitarra ${data.data[0].attributes.nombre}`
@@ -31,16 +51,6 @@ export function links(){
 
 
 
-/**
- * Es una función que toma un objeto con una propiedad params y devuelve una promesa que se resuelve en
- * un objeto con una propiedad guitarra1
- * @returns El objeto guitarra1
- */
-export async function loader({params}){
-   const {guitarraUrl} = params
-   const guitarra1 = await getGuitarra(guitarraUrl)
-   return guitarra1
-}
 
 function Guitarra() {
   const guitarra = useLoaderData();
