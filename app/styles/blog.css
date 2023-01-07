@@ -15,7 +15,8 @@
 }
 
 .post{
-
+    max-width: 80rem;
+    margin: 0 auto;
 }
 
 .post .contenido{
@@ -40,4 +41,12 @@
     -webkit-line-clamp: 4;
     overflow: hidden;
     font-size: 1.6rem;
+}
+
+.post .texto{
+    white-space: pre-wrap;
+}
+
+.post .imagen{
+    margin-top: 1rem;
 }

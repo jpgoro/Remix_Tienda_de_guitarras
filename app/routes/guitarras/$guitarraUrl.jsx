@@ -3,6 +3,12 @@ import {getGuitarra} from "~/models/guitarras.sever"
 import styles from "~/styles/guitarras.css"
 
 
+/**
+ * Es una función que toma un parámetro llamado params, que es un objeto que contiene una propiedad
+ * llamada guitarraUrl. Luego usa la propiedad guitarraUrl para realizar una solicitud a la API y
+ * devuelve la respuesta.
+ * @returns El objeto guitarra1 está siendo devuelto.
+ */
 export async function loader({params}){
    const {guitarraUrl} = params
    const guitarra1 = await getGuitarra(guitarraUrl)
@@ -16,8 +22,9 @@ export async function loader({params}){
    return guitarra1
 }
 
+
 /**
- * Toma los datos de la API y devuelve un título y una descripción para la página.
+ * Devuelve un objeto con una propiedad de título y descripción.
  * @returns Un objeto con el título y la descripción de la página.
  */
 export function meta({data}){
