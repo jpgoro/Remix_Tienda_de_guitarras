@@ -1,7 +1,7 @@
 import { useLoaderData } from "@remix-run/react";
 import {formatearFecha} from "~/utils/helpers"
 import {getPost} from "~/models/posts.server"
-import styles from "~/styles/blog.css"
+// import styles from "~/styles/blog.css"
 
 export function meta({data}){
     if(!data){
@@ -18,14 +18,14 @@ export function meta({data}){
     }
   }
 
-export function links(){
-    return [
-        {
-            rel: 'stylesheet',
-            href: styles
-        }
-    ]
-}
+// export function links(){
+//     return [
+//         {
+//             rel: 'stylesheet',
+//             href: styles
+//         }
+//     ]
+// }
 
 /**
  * Toma un parámetro llamado params, que es un objeto que contiene una propiedad llamada postUrl, que
@@ -50,7 +50,7 @@ export default function Post() {
     const post = useLoaderData();
     const{titulo, contenido, imagen, publishedAt}=post[0]?.attributes;
   return (
-    <article className="contenedor post">
+    <article className="post">
         <img
         className="imagen"
         src={imagen?.data?.attributes?.url}
